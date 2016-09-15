@@ -213,7 +213,6 @@ public class Watek implements Runnable{
 				System.out.println("Android CASE! ");
 				System.out.println("Case 4");
 				System.out.println("Zapytanie o id");
-				out=socket.getOutputStream();
 				out.write(1);
 				out.flush();
 				System.out.println("Teraz id");
@@ -250,7 +249,6 @@ public class Watek implements Runnable{
 				System.out.println("LISTA ANDROID CASE! ");
 				System.out.println("Case 5");
 				System.out.println("Zapytanie o id");
-				out=socket.getOutputStream();
 				out.write(1);
 				out.flush();
 				System.out.println("Teraz id");
@@ -259,7 +257,7 @@ public class Watek implements Runnable{
 				File plik=new File("C:/PicSwaper/Users/U"+id);
 				List<String> listor=FolderWorker.robTo(new ArrayList<String>(), plik);
 				List<TypyFile> ls=FolderWorker.tworer(listor,plik);
-				oos.writeObject(lista);
+				oos.writeObject(ls);
 				System.out.println("Lista wyslana");
 			}
 			

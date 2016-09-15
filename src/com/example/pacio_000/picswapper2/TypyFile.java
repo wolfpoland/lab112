@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 
 public class TypyFile implements Serializable{
+	private static final long serialVersionUID = 9103658319690261644L;
 	private byte[] tab;
 	private File file;
 	private FolderWorker.Typ typ;

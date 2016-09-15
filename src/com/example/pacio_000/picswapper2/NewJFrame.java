@@ -29,6 +29,8 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
+import org.json.JSONException;
+
 /**
  *
  * @author pacio_000
@@ -103,7 +105,7 @@ public class NewJFrame extends javax.swing.JFrame {
         		System.out.println("Mail: "+mail+"\n haslo: "+haslo);
         		
         		try {
-					Uzytkownik uz=TestBaza.Logowanie(mail, haslo);
+					Uzytkownik uz=TestBaza.LogowanieZresta(mail, haslo);
 					if(uz!=null && !mail.equals("") && !haslo.equals("")){
 						System.out.println("Zalogowano");
 						File plik=new File("C:/PicSwaper/Users/U"+uz.getID());
@@ -136,12 +138,12 @@ public class NewJFrame extends javax.swing.JFrame {
 						 jLabel4.setText("Bl¹d Logowania ! ");
 					}
 					
-				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
+				} catch (JSONException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
 				}
         		
         	}

@@ -71,8 +71,9 @@ public class Serwer implements Runnable {
 			//	System.out.println(" Czekam na klienta..");
 				
 			//	writer.println("Serwer >> Czekam na klienta /n");
-				
+				//System.out.println("Stoje przed ifem");
 				if(t==null || !t.isAlive()){
+					System.out.println("Jestem w srodku i czekam na klienta");
 					text.append("\n Czekam na klienta " );
 				socket=serwer.accept();
 				System.out.println("Klient polaczony");
@@ -85,7 +86,7 @@ public class Serwer implements Runnable {
 			//	ObjectOutputStream obj=new ObjectOutputStream(out);
 				 oos=new ObjectOutputStream(socket.getOutputStream());
 				 System.out.println("oos poszedl");
-				 obj=new ObjectInputStream(socket.getInputStream());
+				 obj=new ObjectInputStream(in);
 				 System.out.println("obj poszedl");
 				// oos=new ObjectOutputStream(socket.getOutputStream());
 				// System.out.println("oos poszedl");
@@ -110,7 +111,17 @@ public class Serwer implements Runnable {
 			}catch(Exception e){
 				e.printStackTrace();
 				System.err.println("Zepsulo sie ");
-				dzialanie=false;
+				//dzialanie=false;
+				
+				oos.close();
+				if(obj!=null){
+					obj.close();
+				}
+				in.close();
+				out.close();
+				socket.close();
+				System.out.println("Zakonczone zamykanie");
+				
 			}
 		}
 		//	}
