@@ -1,11 +1,23 @@
 package com.example.pacio_000.picswapper2;
 
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.*;
+
+import netscape.javascript.JSObject;
 
 public class TestBaza {
 	private static Connection c=null;
@@ -30,6 +42,25 @@ public class TestBaza {
 		stm.close();
 		c.close();
 		
+	}
+	public static Uzytkownik LogowanieZresta(String mail, String haslo) throws IOException, JSONException{
+		   String url = "http://restpicswapper220160914030601.azurewebsites.net/api/Uzytkowniks/logo?mail=" + mail + "&haslo=" + haslo;
+		 //  List<String> lista=new ArrayList<String>();
+		   Uzytkownik uz = null;
+		   URL lacz=new URL(url);
+		   URLConnection pol=lacz.openConnection();
+		   InputStream is=pol.getInputStream();
+		   BufferedReader br=new BufferedReader(new InputStreamReader(is));
+		   String line;
+		   while((line=br.readLine()) != null){
+			   JSONObject obj=new JSONObject(line);
+			   uz=new Uzytkownik(obj.getInt("Id"),obj.getString("imie"),obj.getString("nazwisko"),obj.getString("mail"),obj.getString("haslo"));
+			   
+		   }
+		   br.close();
+		   is.close();
+		   return uz;
+		   
 	}
 	public static Uzytkownik Logowanie(String mail, String haslo) throws ClassNotFoundException, SQLException{
 		polaczZBaza();

@@ -246,6 +246,22 @@ public class Watek implements Runnable{
 			}
 				break;
 			}
+			case 5:{
+				System.out.println("LISTA ANDROID CASE! ");
+				System.out.println("Case 5");
+				System.out.println("Zapytanie o id");
+				out=socket.getOutputStream();
+				out.write(1);
+				out.flush();
+				System.out.println("Teraz id");
+				int id=in.read();
+				System.out.println("Polaczono z klientem o id: "+id);
+				File plik=new File("C:/PicSwaper/Users/U"+id);
+				List<String> listor=FolderWorker.robTo(new ArrayList<String>(), plik);
+				List<TypyFile> ls=FolderWorker.tworer(listor,plik);
+				oos.writeObject(lista);
+				System.out.println("Lista wyslana");
+			}
 			
 			}
 			
