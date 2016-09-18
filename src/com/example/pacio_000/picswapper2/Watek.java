@@ -257,6 +257,9 @@ public class Watek implements Runnable{
 				File plik=new File("C:/PicSwaper/Users/U"+id);
 				List<String> listor=FolderWorker.robTo(new ArrayList<String>(), plik);
 				List<TypyFile> ls=FolderWorker.tworer(listor,plik);
+				for(int n=0;n<ls.size();n++){
+					System.out.println(":"+n+" : "+ls.get(n).getNazwa());
+				}
 				oos.writeObject(ls);
 				System.out.println("Lista wyslana");
 			}

@@ -44,6 +44,7 @@ public class TestBaza {
 		
 	}
 	public static Uzytkownik LogowanieZresta(String mail, String haslo) throws IOException, JSONException{
+		//http://restpicswapper220160914030601.azurewebsites.net/
 		   String url = "http://restpicswapper220160914030601.azurewebsites.net/api/Uzytkowniks/logo?mail=" + mail + "&haslo=" + haslo;
 		 //  List<String> lista=new ArrayList<String>();
 		   Uzytkownik uz = null;
