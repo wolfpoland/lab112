@@ -262,6 +262,21 @@ public class Watek implements Runnable{
 				}
 				oos.writeObject(ls);
 				System.out.println("Lista wyslana");
+				break;
+			}
+			case 6:{
+				System.out.println("oDBIERANIE ANDROID CASE");
+				System.out.println("Case 6");
+				System.out.println("Zapytanie o id");
+				DataInputStream dis=new DataInputStream(in);
+				out.write(1);
+				out.flush();
+				System.out.println("Teraz id");
+				int id=in.read();
+				String adresor=dis.readLine();
+				
+				dis.close();
+				
 			}
 			
 			}
